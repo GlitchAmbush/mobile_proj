@@ -26,7 +26,7 @@ class _ShopPageState extends State<ShopPage> {
                     style: ElevatedButton.styleFrom(
                         minimumSize: const Size.fromHeight(100)),
                     onPressed: () {},
-                    child: Text('Upgrade $index')),
+                    child: Text('Upgrade $index \nIncrease Money :D')),
               );
             }));
   }
