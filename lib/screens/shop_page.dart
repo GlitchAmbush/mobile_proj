@@ -18,7 +18,7 @@ class _ShopPageState extends State<ShopPage> {
         ),
         body: ListView.builder(
             controller: _firstController,
-            itemCount: 15,
+            itemCount: 16,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.all(5.0),
