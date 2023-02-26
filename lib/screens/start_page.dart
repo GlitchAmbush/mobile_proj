@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main_game.dart';
+import '../nav/navigation.dart';
 
 class Start extends StatelessWidget {
   const Start({super.key});
@@ -16,8 +16,10 @@ class Start extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Screen2()));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Navigation()));
                 },
                 child: const Text('Play'),
               ),

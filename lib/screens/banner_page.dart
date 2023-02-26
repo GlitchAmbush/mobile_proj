@@ -5,6 +5,13 @@ class BannerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.purple[300],
+          title: const Text('Banner'),
+        ),
+        body: const Center(
+          child: Text('Banner'),
+        ));
   }
 }
