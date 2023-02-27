@@ -24,7 +24,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                 height: 50,
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.purple)),
-                child: Center(child: Text('Achievement $index')),
+                child: Center(child: Text('Achievement $index \nlorum ipsum')),
               );
             }));
   }
