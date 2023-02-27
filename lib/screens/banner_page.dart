@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../util/constants.dart' as constants;
 
 class BannerPage extends StatefulWidget {
   const BannerPage({Key? key}) : super(key: key);
@@ -14,8 +15,8 @@ class _BannerPageState extends State<BannerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.green,
-            title: const Text('Recruit Banners')),
+            backgroundColor: Colors.blue,
+            title: Text('Subs: ${constants.members}')),
         body: ListView.builder(
             controller: _firstController,
             itemCount: 6,
