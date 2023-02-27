@@ -15,13 +15,6 @@ class Navigation extends StatefulWidget {
 
 class _NavigationState extends State<Navigation> {
   int _selectedIndex = 2;
-  final List<Widget> _children = [
-    const ShopPage(),
-    const BannerPage(),
-    const MainGame(),
-    const CollectionPage(),
-    const AchievementsPage()
-  ];
 
   void _onItemTapped(int index) {
     setState(
@@ -30,6 +23,14 @@ class _NavigationState extends State<Navigation> {
       },
     );
   }
+
+  final List<Widget> _children = [
+    const ShopPage(),
+    const BannerPage(),
+    const MainGame(),
+    const CollectionPage(),
+    const AchievementsPage()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class _NavigationState extends State<Navigation> {
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart), label: 'Shop'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.local_play), label: 'Banners'),
+              icon: Icon(Icons.local_play), label: 'Recruit'),
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.beenhere_outlined), label: 'Collection'),

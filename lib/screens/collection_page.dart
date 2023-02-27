@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../util/constants.dart' as constants;
 
 class CollectionPage extends StatefulWidget {
   const CollectionPage({Key? key}) : super(key: key);
@@ -13,9 +14,8 @@ class _CollectionPageState extends State<CollectionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.purple[300],
-          title: const Text('Collection'),
-        ),
+            backgroundColor: Colors.blue,
+            title: Text('Subs: ${constants.members}')),
         body: ListView.builder(
             controller: _firstController,
             itemCount: 15,
