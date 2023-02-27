@@ -15,13 +15,6 @@ class Navigation extends StatefulWidget {
 
 class _NavigationState extends State<Navigation> {
   int _selectedIndex = 2;
-  int _count = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _count++;
-    });
-  }
 
   void _onItemTapped(int index) {
     setState(
@@ -31,13 +24,10 @@ class _NavigationState extends State<Navigation> {
     );
   }
 
-  late final List<Widget> _children = [
+  final List<Widget> _children = [
     const ShopPage(),
     const BannerPage(),
-    MainGame(
-      update: _incrementCounter,
-      count: _count,
-    ),
+    const MainGame(),
     const CollectionPage(),
     const AchievementsPage()
   ];

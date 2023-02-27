@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import '../util/constants.dart' as constants;
 
 class MainGame extends StatefulWidget {
-  final Function() update;
-  final int count;
-
-  const MainGame({super.key, required this.update, required this.count});
+  const MainGame({super.key});
 
   @override
   State<MainGame> createState() => _MainGameState();
 }
 
 class _MainGameState extends State<MainGame> {
+  int _count = constants.members;
+
+  void update() {
+    setState(() {
+      constants.members++;
+      _count++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +29,13 @@ class _MainGameState extends State<MainGame> {
             children: [
               const Text('Members Subscribed'),
               Text(
-                '${widget.count} Members',
+                '$_count Members',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               Padding(
                 padding: const EdgeInsets.all(60.0),
                 child: FloatingActionButton.large(
-                    onPressed: () => widget.update,
+                    onPressed: update,
                     tooltip: 'Gain Members!',
                     child: const Icon(Icons.add)),
               )
