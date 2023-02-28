@@ -10,14 +10,14 @@ class MainGame extends StatefulWidget {
 }
 
 class _MainGameState extends State<MainGame> {
-  int _count = constants.members;
+  int _count = constants.subs;
   int _timedCount = 0;
   double _average = 0;
   Timer? timer;
 
   void update() {
     setState(() {
-      constants.members++;
+      constants.subs++;
       _count++;
       _timedCount++;
     });

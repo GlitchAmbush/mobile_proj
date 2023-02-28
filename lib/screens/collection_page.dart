@@ -15,7 +15,7 @@ class _CollectionPageState extends State<CollectionPage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: Text('Subs: ${constants.members}')),
+            title: Text('Subs: ${constants.subs}')),
         body: ListView.builder(
             controller: _firstController,
             itemCount: 15,
