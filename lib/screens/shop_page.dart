@@ -10,12 +10,13 @@ class ShopPage extends StatefulWidget {
 
 class _ShopPageState extends State<ShopPage> {
   final ScrollController _firstController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: Text('Subs: ${constants.members}')),
+            title: Text('Subs: ${constants.subs}')),
         body: ListView.builder(
             controller: _firstController,
             itemCount: 15,
