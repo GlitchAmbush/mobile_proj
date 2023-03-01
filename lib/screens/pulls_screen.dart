@@ -16,6 +16,12 @@ class _PullsScreenState extends State<PullsScreen> {
   late final List? _names = _list?.keys.toList();
   late final List? _rates = _list?.values.toList();
 
+  void _gachaRoll(bool tenTimes) {
+    if (tenTimes) setState(() => constants.subs -= 100);
+
+    setState(() => constants.subs -= 10);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,28 +43,64 @@ class _PullsScreenState extends State<PullsScreen> {
             )),
         bottomNavigationBar: BottomAppBar(
           color: const Color.fromARGB(255, 102, 183, 250),
-          height: 50,
+          height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (constants.subs >= 10) {
+                      _gachaRoll(false);
+                    } else {
+                      showDialog(
+                          context: context,
+                          builder: ((context) => AlertDialog(
+                                title: const Text('Insufficient Members!'),
+                                content: const Text(
+                                    'You have insufficient members to recruit a new idol to your company!'),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(context, 'OK'),
+                                      child: const Text('OK'))
+                                ],
+                              )));
+                    }
+                  },
                   child: const Text(
                     'Recruit Idol\nx1',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   )),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (constants.subs >= 100) {
+                      _gachaRoll(true);
+                    } else {
+                      showDialog(
+                          context: context,
+                          builder: ((context) => AlertDialog(
+                                title: const Text('Insufficient Members!'),
+                                content: const Text(
+                                    'You have insufficient members to recruit a new idol to your company!'),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(context, 'OK'),
+                                      child: const Text('OK'))
+                                ],
+                              )));
+                    }
+                  },
                   child: const Text(
                     'Recruit Idol\nx10',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   )),
