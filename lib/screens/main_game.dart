@@ -25,7 +25,7 @@ class _MainGameState extends State<MainGame> {
 
   void averageClicks() {
     setState(() {
-      _average = _timedCount / 5;
+      _average = _timedCount / 3;
       _timedCount = 0;
     });
   }
@@ -34,7 +34,7 @@ class _MainGameState extends State<MainGame> {
   void initState() {
     super.initState();
     timer = Timer.periodic(
-        const Duration(seconds: 5), (Timer t) => averageClicks());
+        const Duration(seconds: 3), (Timer t) => averageClicks());
   }
 
   @override
