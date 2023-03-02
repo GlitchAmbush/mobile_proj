@@ -17,9 +17,13 @@ class _PullsScreenState extends State<PullsScreen> {
   late final List? _rates = _list?.values.toList();
 
   void _gachaRoll(bool tenTimes) {
-    if (tenTimes) setState(() => constants.subs -= 100);
+    if (tenTimes) setState(() => constants.holoCoins -= 100);
 
-    setState(() => constants.subs -= 10);
+    setState(() => constants.holoCoins -= 10);
+  }
+
+  double _convertToPercent(double val) {
+    return (val * 100);
   }
 
   @override
@@ -33,7 +37,7 @@ class _PullsScreenState extends State<PullsScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 5.0),
                 child: Text(
-                  'Subs: ${constants.subs} Members',
+                  'HoloCoins: ${constants.holoCoins}',
                   style: const TextStyle(
                       color: Colors.amber,
                       fontSize: 15,
@@ -49,7 +53,7 @@ class _PullsScreenState extends State<PullsScreen> {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    if (constants.subs >= 10) {
+                    if (constants.holoCoins >= 10) {
                       _gachaRoll(false);
                     } else {
                       showDialog(
@@ -78,7 +82,7 @@ class _PullsScreenState extends State<PullsScreen> {
                   )),
               ElevatedButton(
                   onPressed: () {
-                    if (constants.subs >= 100) {
+                    if (constants.holoCoins >= 100) {
                       _gachaRoll(true);
                     } else {
                       showDialog(
@@ -129,7 +133,7 @@ class _PullsScreenState extends State<PullsScreen> {
                       child: Row(
                         children: [
                           Text('Idol:   ${_names?[index].toString()}\n'
-                              'Rate:  ${_rates?[index].toString()}'),
+                              'Rate:  ${_convertToPercent(_rates?[index]).toString()}%'),
                         ],
                       ),
                     )),

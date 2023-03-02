@@ -10,14 +10,14 @@ class MainGame extends StatefulWidget {
 }
 
 class _MainGameState extends State<MainGame> {
-  int _count = constants.subs;
+  int _count = constants.holoCoins;
   int _timedCount = 0;
   double _average = 0;
   Timer? timer;
 
   void update() {
     setState(() {
-      constants.subs++;
+      constants.holoCoins++;
       _count++;
       _timedCount++;
     });
@@ -47,17 +47,17 @@ class _MainGameState extends State<MainGame> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text('Members Subscribed'),
+              const Text('HoloCoins Earned'),
               Text(
-                '$_count Members',
+                '$_count HoloCoins',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              Text('$_average Subs/second'),
+              Text('$_average HoloCoins/second'),
               Padding(
                 padding: const EdgeInsets.all(60.0),
                 child: FloatingActionButton.large(
                     onPressed: update,
-                    tooltip: 'Gain Members!',
+                    tooltip: 'Gain HoloCoins!',
                     child: const Icon(Icons.add)),
               )
             ],

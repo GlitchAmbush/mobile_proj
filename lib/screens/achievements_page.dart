@@ -15,7 +15,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: Text('Subs: ${constants.subs} Members')),
+            title: Text('HoloCoins: ${constants.holoCoins}')),
         body: ListView.builder(
             controller: _firstController,
             itemCount: 15,

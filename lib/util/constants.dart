@@ -1,5 +1,5 @@
 // Currency
-int subs = 0;
+int holoCoins = 0;
 
 // Banner Data
 Map<String, Map> bannerTitle = {
@@ -16,37 +16,37 @@ Map<String, Map> bannerTitle = {
 };
 
 // Hololive 1st Gen Members + Rates
-Map<String, String> firstGen = {
-  'Tokino Sora': '5.0%',
-  'Roboco-san': '15.0%',
-  'Sakura Miko': '25.0%',
-  'Hoshimachi Suisei': '45.0%',
-  'AZKi': '60.0%',
+Map<String, double> firstGen = {
+  'Tokino Sora': 0.2,
+  'Roboco-san': 0.2,
+  'Sakura Miko': 0.2,
+  'Hoshimachi Suisei': 0.2,
+  'AZKi': 0.2,
 };
 
 // 2nd Gen
-Map<String, String> secondGen = {'Test': 'Test'};
+Map<String, double> secondGen = {'Test': 1};
 
 // 3rd Gen
-Map<String, String> thirdGen = {'Test': 'Test'};
+Map<String, double> thirdGen = {'Test': 1};
 
 // 4th Gen
-Map<String, String> fourthGen = {'Test': 'Test'};
+Map<String, double> fourthGen = {'Test': 1};
 
 // 5th Gen
-Map<String, String> fifthGen = {'Test': 'Test'};
+Map<String, double> fifthGen = {'Test': 1};
 
 // HoloGamers
-Map<String, String> gamers = {'Test': 'Test'};
+Map<String, double> gamers = {'Test': 1};
 
 // HoloX
-Map<String, String> holoX = {'Test': 'Test'};
+Map<String, double> holoX = {'Test': 1};
 
 // HoloMyth
-Map<String, String> myth = {'Test': 'Test'};
+Map<String, double> myth = {'Test': 1};
 
 // HoloCouncil
-Map<String, String> council = {'Test': 'Test'};
+Map<String, double> council = {'Test': 1};
 
 // Holo ID
-Map<String, String> indonesia = {'Test': 'Test'};
+Map<String, double> indonesia = {'Test': 1};
