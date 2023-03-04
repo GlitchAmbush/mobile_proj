@@ -42,10 +42,20 @@ Map<String, double> thirdGen = {
 };
 
 // 4th Gen
-Map<String, double> fourthGen = {'Test': 1};
+Map<String, double> fourthGen = {
+  "Amane Kanata": 0.3,
+  "Tsunomaki Watame": 0.4,
+  "Tokoyami Towa": 0.2,
+  "Himemori Luna": 0.1
+};
 
 // 5th Gen
-Map<String, double> fifthGen = {'Test': 1};
+Map<String, double> fifthGen = {
+  "Yukihana Lamy": 0.1,
+  "Momosuzu Nene": 0.4,
+  "Omaru Polka": 0.2,
+  "Shishiro Botan": 0.3,
+};
 
 // HoloGamers
 Map<String, double> gamers = {'Test': 1};
