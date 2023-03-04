@@ -25,10 +25,21 @@ Map<String, double> firstGen = {
 };
 
 // 2nd Gen
-Map<String, double> secondGen = {'Test': 1};
+Map<String, double> secondGen = {
+  "Minato Aqua": 0.25,
+  "Murasaki Shion": 0.2,
+  "Oozora Subaru": 0.35,
+  "Yuzuki Choco": 0.1,
+  "Nakiri Ayame": 0.1,
+};
 
 // 3rd Gen
-Map<String, double> thirdGen = {'Test': 1};
+Map<String, double> thirdGen = {
+  "Usada Pekora": 0.35,
+  "Houshou Marine": 0.45,
+  "Shiranui Flare": 0.1,
+  "Shirogane Noel": 0.1,
+};
 
 // 4th Gen
 Map<String, double> fourthGen = {'Test': 1};
