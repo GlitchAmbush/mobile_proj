@@ -31,7 +31,7 @@ class _BannerPageState extends State<BannerPage> {
             title: Text('HoloCoins: ${constants.holoCoins}')),
         body: ListView.builder(
             controller: _firstController,
-            itemCount: 10,
+            itemCount: _list.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.all(5.0),

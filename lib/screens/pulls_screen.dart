@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../util/constants.dart' as constants;
+import 'package:dart_random_choice/dart_random_choice.dart';
 
 class PullsScreen extends StatefulWidget {
   final String idolList;
@@ -17,13 +18,48 @@ class _PullsScreenState extends State<PullsScreen> {
   late final List? _rates = _list?.values.toList();
 
   void _gachaRoll(bool tenTimes) {
-    if (tenTimes) setState(() => constants.holoCoins -= 100);
+    String singlePull =
+        randomChoice(_names as Iterable<String>, _rates as Iterable<double>);
+    String tenPull = "";
 
-    setState(() => constants.holoCoins -= 10);
+    if (tenTimes) {
+      setState(() => constants.holoCoins -= 100);
+
+      for (var i = 0; i < 10; i++) {
+        tenPull +=
+            "\n[${i + 1}] ${randomChoice(_names as Iterable<String>, _rates as Iterable<double>)}";
+      }
+
+      showDialog(
+          context: context,
+          builder: ((context) => AlertDialog(
+                title: const Text("You pulled 10 times!"),
+                content: Text("You pulled: $tenPull"),
+                actions: [
+                  TextButton(
+                      onPressed: () => Navigator.pop(context, 'OK'),
+                      child: const Text('OK'))
+                ],
+              )));
+    } else {
+      setState(() => constants.holoCoins -= 10);
+
+      showDialog(
+          context: context,
+          builder: ((context) => AlertDialog(
+                title: const Text("You pulled 1 time!"),
+                content: Text("You pulled: $singlePull"),
+                actions: [
+                  TextButton(
+                      onPressed: () => Navigator.pop(context, 'OK'),
+                      child: const Text('OK'))
+                ],
+              )));
+    }
   }
 
-  double _convertToPercent(double val) {
-    return (val * 100);
+  String _convertToPercent(double val) {
+    return ((val * 100).toStringAsFixed(2));
   }
 
   @override
@@ -61,7 +97,7 @@ class _PullsScreenState extends State<PullsScreen> {
                           builder: ((context) => AlertDialog(
                                 title: const Text('Insufficient Members!'),
                                 content: const Text(
-                                    'You have insufficient members to recruit a new idol to your company!'),
+                                    'You have HoloCoins to recruit a new idol to your company!'),
                                 actions: [
                                   TextButton(
                                       onPressed: () =>
@@ -90,7 +126,7 @@ class _PullsScreenState extends State<PullsScreen> {
                           builder: ((context) => AlertDialog(
                                 title: const Text('Insufficient Members!'),
                                 content: const Text(
-                                    'You have insufficient members to recruit a new idol to your company!'),
+                                    'You have HoloCoins to recruit a new idol to your company!'),
                                 actions: [
                                   TextButton(
                                       onPressed: () =>
@@ -133,7 +169,7 @@ class _PullsScreenState extends State<PullsScreen> {
                       child: Row(
                         children: [
                           Text('Idol:   ${_names?[index].toString()}\n'
-                              'Rate:  ${_convertToPercent(_rates?[index]).toString()}%'),
+                              'Rate:  ${_convertToPercent(_rates?[index])}%'),
                         ],
                       ),
                     )),
