@@ -52,7 +52,7 @@ class _MainGameState extends State<MainGame> {
                 '$_count HoloCoins',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              Text('$_average HoloCoins/second'),
+              Text('${_average.toStringAsFixed(2)} HoloCoins/second'),
               Padding(
                 padding: const EdgeInsets.all(60.0),
                 child: FloatingActionButton.large(
