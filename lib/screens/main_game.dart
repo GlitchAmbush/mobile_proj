@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../util/user_data.dart' as user;
 import 'dart:async';
+import 'dart:io';
 
 class MainGame extends StatefulWidget {
   const MainGame({super.key});
@@ -62,7 +64,23 @@ class _MainGameState extends State<MainGame> {
                     onPressed: update,
                     tooltip: 'Gain HoloCoins!',
                     child: const Icon(Icons.add)),
-              )
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setInt('counter', _count);
+                  },
+                  child: const Text('Save Data')),
+              ElevatedButton(
+                  onPressed: () async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                        setState(() {
+                          _count = prefs.getInt('counter')!;
+                        });
+                  },
+                  child: const Text('load Data'))
             ],
           ),
         ));
