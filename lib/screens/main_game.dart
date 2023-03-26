@@ -24,10 +24,11 @@ class _MainGameState extends State<MainGame> {
   }
 
   void averageClicks() {
-    setState(() {
+    if (_timedCount == 0) {
+      _average = 0;
+    } else {
       _average = _timedCount / 3;
-      _timedCount = 0;
-    });
+    }
   }
 
   @override
