@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../util/constants.dart' as constants;
+import '../util/banner_data.dart' as banner;
+import '../util/user_data.dart' as user;
 import 'pulls_screen.dart';
 
 class BannerPage extends StatefulWidget {
@@ -12,10 +13,10 @@ class BannerPage extends StatefulWidget {
 class _BannerPageState extends State<BannerPage> {
   final ScrollController _firstController = ScrollController();
 
-  final _list = constants.bannerTitle.keys.toList();
+  final _list = banner.bannerTitle.keys.toList();
 
   void _goToPulls(BuildContext context, String selectedBanner) {
-    if (constants.bannerTitle.containsKey(selectedBanner)) {
+    if (banner.bannerTitle.containsKey(selectedBanner)) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: ((context) => PullsScreen(
                 idolList: selectedBanner,
@@ -28,7 +29,7 @@ class _BannerPageState extends State<BannerPage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: Text('HoloCoins: ${constants.holoCoins}')),
+            title: Text('HoloCoins: ${user.holoCoins}')),
         body: ListView.builder(
             controller: _firstController,
             itemCount: _list.length,

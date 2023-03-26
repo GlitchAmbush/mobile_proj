@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../util/constants.dart' as constants;
+import '../util/user_data.dart' as user;
 
 class ShopPage extends StatefulWidget {
   const ShopPage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _ShopPageState extends State<ShopPage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: Text('HoloCoins: ${constants.holoCoins}')),
+            title: Text('HoloCoins: ${user.holoCoins}')),
         body: ListView.builder(
             controller: _firstController,
             itemCount: 15,

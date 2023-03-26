@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../util/constants.dart' as constants;
+import '../util/banner_data.dart' as banner;
+import '../util/user_data.dart' as user;
 import 'package:dart_random_choice/dart_random_choice.dart';
 
 class PullsScreen extends StatefulWidget {
@@ -12,8 +13,8 @@ class PullsScreen extends StatefulWidget {
 
 class _PullsScreenState extends State<PullsScreen> {
   late String bannerName = widget.idolList;
-  late final Map? _list = constants.bannerTitle[bannerName];
-  late final int? _count = constants.bannerTitle[bannerName]?.length;
+  late final Map? _list = banner.bannerTitle[bannerName];
+  late final int? _count = banner.bannerTitle[bannerName]?.length;
   late final List? _names = _list?.keys.toList();
   late final List? _rates = _list?.values.toList();
 
@@ -23,7 +24,7 @@ class _PullsScreenState extends State<PullsScreen> {
     String tenPull = "";
 
     if (tenTimes) {
-      setState(() => constants.holoCoins -= 100);
+      setState(() => user.holoCoins -= 100);
 
       for (var i = 0; i < 10; i++) {
         tenPull +=
@@ -42,7 +43,7 @@ class _PullsScreenState extends State<PullsScreen> {
                 ],
               )));
     } else {
-      setState(() => constants.holoCoins -= 10);
+      setState(() => user.holoCoins -= 10);
 
       showDialog(
           context: context,
@@ -73,7 +74,7 @@ class _PullsScreenState extends State<PullsScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 5.0),
                 child: Text(
-                  'HoloCoins: ${constants.holoCoins}',
+                  'HoloCoins: ${user.holoCoins}',
                   style: const TextStyle(
                       color: Colors.amber,
                       fontSize: 15,
@@ -89,7 +90,7 @@ class _PullsScreenState extends State<PullsScreen> {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    if (constants.holoCoins >= 10) {
+                    if (user.holoCoins >= 10) {
                       _gachaRoll(false);
                     } else {
                       showDialog(
@@ -118,7 +119,7 @@ class _PullsScreenState extends State<PullsScreen> {
                   )),
               ElevatedButton(
                   onPressed: () {
-                    if (constants.holoCoins >= 100) {
+                    if (user.holoCoins >= 100) {
                       _gachaRoll(true);
                     } else {
                       showDialog(

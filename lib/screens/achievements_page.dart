@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../util/constants.dart' as constants;
+import '../util/user_data.dart' as user;
 
 class AchievementsPage extends StatefulWidget {
   const AchievementsPage({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: Text('HoloCoins: ${constants.holoCoins}')),
+            title: Text('HoloCoins: ${user.holoCoins}')),
         body: ListView.builder(
             controller: _firstController,
             itemCount: 15,

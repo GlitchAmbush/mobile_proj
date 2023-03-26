@@ -1,5 +1,3 @@
-// Currency
-int holoCoins = 0;
 
 // Banner Data
 Map<String, Map> bannerTitle = {
