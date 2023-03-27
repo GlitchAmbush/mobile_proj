@@ -27,8 +27,12 @@ class _PullsScreenState extends State<PullsScreen> {
       setState(() => user.holoCoins -= 100);
 
       for (var i = 0; i < 10; i++) {
-        tenPull +=
-            "\n[${i + 1}] ${randomChoice(_names as Iterable<String>, _rates as Iterable<double>)}";
+        String pulled = randomChoice(
+            _names as Iterable<String>, _rates as Iterable<double>);
+        if (!user.collection.contains(pulled)) {
+          user.collection.add(pulled);
+        }
+        tenPull += "\n[${i + 1}] $pulled";
       }
 
       showDialog(
@@ -44,7 +48,9 @@ class _PullsScreenState extends State<PullsScreen> {
               )));
     } else {
       setState(() => user.holoCoins -= 10);
-
+      if (!user.collection.contains(singlePull)) {
+        user.collection.add(singlePull);
+      }
       showDialog(
           context: context,
           builder: ((context) => AlertDialog(
