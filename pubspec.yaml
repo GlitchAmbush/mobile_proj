@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   dart_random_choice: ^0.2.0
   shared_preferences: ^2.0.20
+  fluttertoast: ^8.2.1
+  toast: ^0.3.0
+  my_plugin: ^0.0.2
 
 dev_dependencies:
   flutter_test:

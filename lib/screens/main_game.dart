@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'achievements_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../util/user_data.dart' as user;
 import 'dart:async';
@@ -11,19 +12,46 @@ class MainGame extends StatefulWidget {
   State<MainGame> createState() => _MainGameState();
 }
 
+
+
 class _MainGameState extends State<MainGame> {
   int _count = user.holoCoins;
   int _timedCount = 0;
   double _average = 0;
   Timer? timer;
+  int arr = achievmentList.length;
 
   void update() {
     setState(() {
       user.holoCoins++;
       _count++;
       _timedCount++;
-    });
+      man();
+      if (achievmentList.length > arr){
+        arr = achievmentList.length;
+                    OverlayEntry overlayEntry = OverlayEntry(
+              builder: (BuildContext context) => Positioned(
+                top: MediaQuery.of(context).size.height * 0.8,
+                left: MediaQuery.of(context).size.width - 200, // Set the left property to shift the overlay to the right side of the screen
+                child: Material(
+                  child: Container(
+                    height: 60.0,
+                    width: 200.0,
+                    color: Colors.grey,
+                    child: const Center(
+                      child: Text('New achievement!'),
+                    ),
+                  ),
+                ),
+              ),
+            );
+            Overlay.of(context).insert(overlayEntry);
+            Future.delayed(const Duration(seconds: 3)).then((_) {
+              overlayEntry.remove();
+            });
+      }});
   }
+  
 
   void averageClicks() {
     if (mounted) {
