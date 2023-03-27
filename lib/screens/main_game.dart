@@ -12,8 +12,6 @@ class MainGame extends StatefulWidget {
   State<MainGame> createState() => _MainGameState();
 }
 
-
-
 class _MainGameState extends State<MainGame> {
   int _count = user.holoCoins;
   int _timedCount = 0;
@@ -27,31 +25,32 @@ class _MainGameState extends State<MainGame> {
       _count++;
       _timedCount++;
       man();
-      if (achievmentList.length > arr){
+      if (achievmentList.length > arr) {
         arr = achievmentList.length;
-                    OverlayEntry overlayEntry = OverlayEntry(
-              builder: (BuildContext context) => Positioned(
-                top: MediaQuery.of(context).size.height * 0.8,
-                left: MediaQuery.of(context).size.width - 200, // Set the left property to shift the overlay to the right side of the screen
-                child: Material(
-                  child: Container(
-                    height: 60.0,
-                    width: 200.0,
-                    color: Colors.grey,
-                    child: const Center(
-                      child: Text('New achievement!'),
-                    ),
-                  ),
+        OverlayEntry overlayEntry = OverlayEntry(
+          builder: (BuildContext context) => Positioned(
+            top: MediaQuery.of(context).size.height * 0.8,
+            left: MediaQuery.of(context).size.width -
+                200, // Set the left property to shift the overlay to the right side of the screen
+            child: Material(
+              child: Container(
+                height: 60.0,
+                width: 200.0,
+                color: Colors.grey,
+                child: const Center(
+                  child: Text('New achievement!'),
                 ),
               ),
-            );
-            Overlay.of(context).insert(overlayEntry);
-            Future.delayed(const Duration(seconds: 3)).then((_) {
-              overlayEntry.remove();
-            });
-      }});
+            ),
+          ),
+        );
+        Overlay.of(context).insert(overlayEntry);
+        Future.delayed(const Duration(seconds: 3)).then((_) {
+          overlayEntry.remove();
+        });
+      }
+    });
   }
-  
 
   void averageClicks() {
     if (mounted) {
@@ -85,7 +84,7 @@ class _MainGameState extends State<MainGame> {
                 '$_count HoloCoins',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              Text('$_average HoloCoins/second'),
+              Text('${_average.toStringAsFixed(2)} HoloCoins/second'),
               Padding(
                 padding: const EdgeInsets.all(60.0),
                 child: FloatingActionButton.large(
@@ -104,9 +103,9 @@ class _MainGameState extends State<MainGame> {
                   onPressed: () async {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
-                        setState(() {
-                          _count = prefs.getInt('counter')!;
-                        });
+                    setState(() {
+                      _count = prefs.getInt('counter')!;
+                    });
                   },
                   child: const Text('load Data'))
             ],
