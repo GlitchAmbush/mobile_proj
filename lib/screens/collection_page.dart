@@ -18,13 +18,13 @@ class _CollectionPageState extends State<CollectionPage> {
             title: Text('HoloCoins: ${user.holoCoins}')),
         body: ListView.builder(
             controller: _firstController,
-            itemCount: 15,
+            itemCount: user.collection.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 height: 50,
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.purple)),
-                child: Center(child: Text('Collectionr $index \nlorum ipsum')),
+                child: Center(child: Text('Idol: ${user.collection[index]}')),
               );
             }));
   }
