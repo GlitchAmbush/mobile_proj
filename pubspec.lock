@@ -152,14 +152,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.0"
-  my_plugin:
-    dependency: "direct main"
-    description:
-      name: my_plugin
-      sha256: "994a462485a98459d97684af00084ba18fb78b3980a5c0d0925fb2ad17492ebb"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
   path:
     dependency: transitive
     description:
