@@ -3,6 +3,8 @@ import "./user_data.dart";
 class Upgrade {
   String name;
   String desc;
+  String upgradedDesc;
+  int cost;
   int tier;
 
   String get upgradeName {
@@ -13,11 +15,19 @@ class Upgrade {
     return desc;
   }
 
+  String get newDesc {
+    return upgradedDesc;
+  }
+
+  int get upgradeCost {
+    return cost;
+  }
+
   int get upgradeTier {
     return tier;
   }
 
-  Upgrade(this.name, this.desc, this.tier);
+  Upgrade(this.name, this.desc, this.upgradedDesc, this.tier, this.cost);
 }
 
 class Passive extends Upgrade {
@@ -33,7 +43,8 @@ class Passive extends Upgrade {
     passiveIncome += (increase * passiveIncome).ceil();
   }
 
-  Passive(super.name, super.desc, super.tier, this.increase);
+  Passive(super.name, super.desc, super.upgradedDesc, super.tier, super.cost,
+      this.increase);
 }
 
 class Active extends Upgrade {
@@ -49,5 +60,6 @@ class Active extends Upgrade {
     onClickIncome += (increase * passiveIncome).ceil();
   }
 
-  Active(super.name, super.desc, super.tier, this.increase);
+  Active(super.name, super.desc, super.upgradedDesc, super.tier, super.cost,
+      this.increase);
 }

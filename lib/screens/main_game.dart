@@ -3,7 +3,6 @@ import 'achievements_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../util/user_data.dart' as user;
 import 'dart:async';
-import 'dart:io';
 
 class MainGame extends StatefulWidget {
   const MainGame({super.key});

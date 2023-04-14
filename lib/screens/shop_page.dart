@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../util/user_data.dart' as user;
-import 'dart:math';
+import '../util/upgrade_data.dart' as upgrade;
 
 class ShopPage extends StatefulWidget {
   const ShopPage({Key? key}) : super(key: key);
@@ -12,41 +12,53 @@ class ShopPage extends StatefulWidget {
 class _ShopPageState extends State<ShopPage> {
   final ScrollController _firstController = ScrollController();
 
+  void increaseTier(tier) {
+    setState(() {
+      tier++;
+    });
+  }
+
+  bool checkMax(tier, max) {
+    if (tier == max) {
+      return true;
+    }
+    return false;
+  }
+
+  String setButtonState(tier, max) {
+    if (tier == max) {
+      return "Maxed";
+    }
+
+    if (tier != 0) {
+      return "Upgrade";
+    }
+
+    return "Buy";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue,
-            centerTitle: true,
             title: Text(
               'HoloCoins: ${user.holoCoins}',
             )),
-        body: ListView.builder(
-            controller: _firstController,
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index) {
-              int random = Random().nextInt(max(1, 1000));
-              int random2 = Random().nextInt(max(1, 15));
-              return Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(100)),
-                    onPressed: () {
-                      setState(() {
-                        if (user.holoCoins < index + 1) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Not enough HoloCoins')));
-                        } else {
-                          user.holoCoins -= random2;
-                          user.holoCoins += random;
-                        }
-                      });
-                    },
-                    child:
-                        Text('Get $random HoloCoins for $random2 HoloCoins')),
-              );
-            }));
+        body: ListView(children: [
+          Card(
+            child: ListTile(
+              title: Text(
+                  "${upgrade.channel.name} [Tier ${upgrade.channel.tier}]"),
+              subtitle: Text(upgrade.channel.desc),
+              trailing: ElevatedButton(
+                  onPressed: () {
+                    increaseTier(upgrade.channel.tier);
+                  },
+                  child: Text(setButtonState(upgrade.channel.tier, 3))),
+              isThreeLine: true,
+            ),
+          )
+        ]));
   }
 }
