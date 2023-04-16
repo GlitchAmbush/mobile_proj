@@ -110,7 +110,7 @@ class _MainGameState extends State<MainGame> {
                 padding: const EdgeInsets.all(60.0),
                 child: FloatingActionButton.large(
                     onPressed: () {
-                      click;
+                      click();
                     },
                     tooltip: 'Gain HoloCoins!',
                     child: const Icon(Icons.add)),
