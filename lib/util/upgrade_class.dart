@@ -32,6 +32,10 @@ class Upgrade {
     return maxTier;
   }
 
+  void purchase() {
+    holoCoins -= cost;
+  }
+
   Upgrade(this.name, this.desc, this.upgradedDesc, this.tier, this.maxTier,
       this.cost);
 }

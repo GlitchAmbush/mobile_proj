@@ -102,7 +102,7 @@ class _PullsScreenState extends State<PullsScreen> {
                       showDialog(
                           context: context,
                           builder: ((context) => AlertDialog(
-                                title: const Text('Insufficient Members!'),
+                                title: const Text('Insufficient HoloCoins!'),
                                 content: const Text(
                                     'You don\'t have enough HoloCoins to recruit a new idol to your company! You need 10 HoloCoins to recruit a new idol.'),
                                 actions: [
@@ -131,7 +131,7 @@ class _PullsScreenState extends State<PullsScreen> {
                       showDialog(
                           context: context,
                           builder: ((context) => AlertDialog(
-                                title: const Text('Insufficient Members!'),
+                                title: const Text('Insufficient HoloCoins!'),
                                 content: const Text(
                                     'You don\'t have enough HoloCoins to recruit a new idol to your company! You need 100 HoloCoins to recruit a new idol.'),
                                 actions: [
