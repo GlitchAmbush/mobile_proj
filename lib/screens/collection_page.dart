@@ -21,11 +21,19 @@ class _CollectionPageState extends State<CollectionPage> {
             itemCount: user.collection.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                height: 50,
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.purple)),
-                child: Center(child: Text('Idol: ${user.collection[index]}')),
-              );
+  height: 50,
+  decoration: BoxDecoration(
+    border: Border.all(color: Colors.purple),
+    color: Colors.blue,
+  ),
+  child: Center(
+    child: Text(
+      'Idol: ${user.collection[index]}',
+      style: const TextStyle(color: Colors.white),
+    ),
+  ),
+);
+
             }));
   }
 }

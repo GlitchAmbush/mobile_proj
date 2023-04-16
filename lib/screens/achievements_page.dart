@@ -7,9 +7,10 @@ const AchievementsPage({Key? key}) : super(key: key);
   @override
   State<AchievementsPage> createState() => _AchievementsPageState();
 }
+
 var achievmentList = [];
 
-man(){
+setAchievments(){
   int count = user.holoCoins; 
         if (count >= 10 && !achievmentList.contains("Reach 10 HoloCoins")) {
         achievmentList.add("Reach 10 HoloCoins");
@@ -32,18 +33,18 @@ man(){
         if (count >= 5000 && !achievmentList.contains("Reach 5000 HoloCoins")) {
         achievmentList.add("Reach 5000 HoloCoins");
                  }
+        if (user.collection.isNotEmpty && !achievmentList.contains("First Idol Recuited")) {
+        achievmentList.add("First Idol Recuited");
+                 }
 }
 
 class _AchievementsPageState extends State<AchievementsPage> {
   final ScrollController _firstController = ScrollController();
   @override
   Widget build(BuildContext context) {
-
-                 
+setAchievments();      
     return Scaffold(
-
         appBar: AppBar(
-          
             backgroundColor: Colors.blue,
             title: Text('HoloCoins: ${user.holoCoins}')),
         body: ListView.builder(
@@ -53,12 +54,21 @@ class _AchievementsPageState extends State<AchievementsPage> {
             itemBuilder: (BuildContext context, int index) {
 
               return Container(
-                height: 50,
-              
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.purple)),
-                child: Center(child: Text('Achievement ${achievmentList[index]}')),
-              );
+  height: 50,
+  decoration: BoxDecoration(
+    color: Colors.blue,
+    border: Border.all(color: Colors.purple),
+  ),
+  child: Center(
+    child: Text(
+      'Achievement ${achievmentList[index]}',
+      style: const TextStyle(
+        color: Colors.white,
+      ),
+    ),
+  ),
+);
+
             }));
   }
 }

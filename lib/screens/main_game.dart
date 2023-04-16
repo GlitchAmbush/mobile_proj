@@ -24,32 +24,40 @@ class _MainGameState extends State<MainGame> {
       user.holoCoins++;
       _count++;
       _timedCount++;
-      man();
-      if (achievmentList.length > arr) {
-        arr = achievmentList.length;
-        OverlayEntry overlayEntry = OverlayEntry(
-          builder: (BuildContext context) => Positioned(
-            top: MediaQuery.of(context).size.height * 0.8,
-            left: MediaQuery.of(context).size.width -
-                200, // Set the left property to shift the overlay to the right side of the screen
-            child: Material(
-              child: Container(
-                height: 60.0,
-                width: 200.0,
-                color: Colors.grey,
-                child: const Center(
-                  child: Text('New achievement!'),
-                ),
+    });
+if (achievmentList.length > arr) {
+  arr = achievmentList.length;
+  OverlayEntry overlayEntry = OverlayEntry(
+    builder: (BuildContext context) => Positioned(
+      top: MediaQuery.of(context).size.height * 0.8,
+      left: MediaQuery.of(context).size.width - 200,
+      child: Material(
+        child: Container(
+          height: 60.0,
+          width: 200.0,
+          decoration: BoxDecoration(
+            color: Colors.blueAccent,
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          child: const Center(
+            child: Text('New achievement!',
+              style: TextStyle(
+                color: Colors.white,
+                  fontSize: 16.0,
               ),
             ),
           ),
-        );
-        Overlay.of(context).insert(overlayEntry);
-        Future.delayed(const Duration(seconds: 3)).then((_) {
-          overlayEntry.remove();
-        });
-      }
-    });
+        ),
+      ),
+    ),
+  );
+  Overlay.of(context).insert(overlayEntry);
+  Future.delayed(const Duration(seconds: 3)).then((_) {
+    overlayEntry.remove();
+  });
+}
+
+
   }
 
   void averageClicks() {
@@ -71,6 +79,7 @@ class _MainGameState extends State<MainGame> {
 
   @override
   Widget build(BuildContext context) {
+setAchievments();
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue, title: const Text('Gatcha!VTuber')),
