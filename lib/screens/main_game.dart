@@ -89,7 +89,8 @@ class _MainGameState extends State<MainGame> {
       update();
     });
   }
-   @override
+
+  @override
   void dispose() {
     timer?.cancel();
     super.dispose();

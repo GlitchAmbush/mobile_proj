@@ -93,9 +93,27 @@ class _ShopPageState extends State<ShopPage> {
                             _upgrades[index].tier, _upgrades[index].maxTier)
                         ? null
                         : () {
-                            increaseTier(
-                                _upgrades[index], _upgrades[index].tier);
-                            checkFuncType(_upgrades[index]);
+                            if (user.holoCoins >= _upgrades[index].cost) {
+                              increaseTier(
+                                  _upgrades[index], _upgrades[index].tier);
+                              checkFuncType(_upgrades[index]);
+                              _upgrades[index].purchase();
+                            } else {
+                              showDialog(
+                                  context: context,
+                                  builder: ((context) => AlertDialog(
+                                        title: const Text(
+                                            'Insufficient HoloCoins!'),
+                                        content: const Text(
+                                            'You don\'t have enough HoloCoins to purchase an upgrade!'),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context, 'OK'),
+                                              child: const Text('OK'))
+                                        ],
+                                      )));
+                            }
                           },
                     child: Text(setButtonState(_upgrades[index].upgradeTier,
                         _upgrades[index].maxTier))),
