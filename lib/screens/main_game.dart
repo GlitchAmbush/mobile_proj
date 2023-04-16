@@ -19,12 +19,27 @@ class _MainGameState extends State<MainGame> {
   Timer? timer;
   int arr = achievmentList.length;
 
+
+
   void update() {
     setState(() {
       user.holoCoins++;
       _count++;
       _timedCount++;
     });
+  }
+  
+
+  void averageClicks() {
+    if (mounted) {
+      if (_timedCount == 0) {
+        _average = 0;
+      } else {
+        _average = _timedCount / 3;
+      }
+    }
+  }
+  void checkAchievement(){
 if (achievmentList.length > arr) {
   arr = achievmentList.length;
   OverlayEntry overlayEntry = OverlayEntry(
@@ -56,19 +71,7 @@ if (achievmentList.length > arr) {
     overlayEntry.remove();
   });
 } 
-
-
-  }
-
-  void averageClicks() {
-    if (mounted) {
-      if (_timedCount == 0) {
-        _average = 0;
-      } else {
-        _average = _timedCount / 3;
-      }
-    }
-  }
+}
 
   @override
   void initState() {
@@ -79,7 +82,6 @@ if (achievmentList.length > arr) {
 
   @override
   Widget build(BuildContext context) {
-setAchievments();
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue, title: const Text('Gatcha!VTuber')),
@@ -97,7 +99,11 @@ setAchievments();
               Padding(
                 padding: const EdgeInsets.all(60.0),
                 child: FloatingActionButton.large(
-                    onPressed: update,
+                    onPressed: (){
+                      update();
+                      setAchievments();
+                      checkAchievement();
+                      },
                     tooltip: 'Gain HoloCoins!',
                     child: const Icon(Icons.add)),
               ),
@@ -120,5 +126,6 @@ setAchievments();
             ],
           ),
         ));
+    
   }
 }
