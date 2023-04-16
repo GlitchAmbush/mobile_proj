@@ -6,6 +6,7 @@ class Upgrade {
   String upgradedDesc;
   int cost;
   int tier;
+  int maxTier;
 
   String get upgradeName {
     return name;
@@ -27,11 +28,17 @@ class Upgrade {
     return tier;
   }
 
-  Upgrade(this.name, this.desc, this.upgradedDesc, this.tier, this.cost);
+  int get upgradeMaxTier {
+    return maxTier;
+  }
+
+  Upgrade(this.name, this.desc, this.upgradedDesc, this.tier, this.maxTier,
+      this.cost);
 }
 
 class Passive extends Upgrade {
   num increase;
+  final String type;
 
   // function that increases passive income
   void intIncrease(increase) {
@@ -43,12 +50,14 @@ class Passive extends Upgrade {
     passiveIncome += (increase * passiveIncome).ceil();
   }
 
-  Passive(super.name, super.desc, super.upgradedDesc, super.tier, super.cost,
-      this.increase);
+  Passive(super.name, super.desc, super.upgradedDesc, super.tier, super.maxTier,
+      super.cost, this.increase,
+      {this.type = "passive"});
 }
 
 class Active extends Upgrade {
   num increase;
+  final String type;
 
   // function that increases on-click value
   void intIncrease(increase) {
@@ -60,6 +69,7 @@ class Active extends Upgrade {
     onClickIncome += (increase * passiveIncome).ceil();
   }
 
-  Active(super.name, super.desc, super.upgradedDesc, super.tier, super.cost,
-      this.increase);
+  Active(super.name, super.desc, super.upgradedDesc, super.tier, super.maxTier,
+      super.cost, this.increase,
+      {this.type = "active"});
 }

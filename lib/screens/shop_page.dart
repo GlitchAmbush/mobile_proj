@@ -10,12 +10,45 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
-  // final ScrollController _firstController = ScrollController();
+  final ScrollController _firstController = ScrollController();
+  final _upgrades = upgrade.upgradeArray;
 
   void increaseTier(object, tierVal) {
     setState(() {
       object.tier = tierVal + 1;
     });
+  }
+
+  void increaseActive(object) {
+    if ((object.increase).runtimeType == int) {
+      setState(() {
+        object.intIncrease(object.increase);
+      });
+    } else if ((object.increase).runtimeType == double) {
+      setState(() {
+        object.percentIncrease(object.increase);
+      });
+    }
+  }
+
+  void increasePassive(object) {
+    if ((object.increase).runtimeType == int) {
+      setState(() {
+        object.intIncrease(object.increase);
+      });
+    } else if ((object.increase).runtimeType == double) {
+      setState(() {
+        object.percentIncrease(object.increase);
+      });
+    }
+  }
+
+  void checkFuncType(object) {
+    if (object.type == "active") {
+      increaseActive(object);
+    } else {
+      increasePassive(object);
+    }
   }
 
   bool checkMax(tier, max) {
@@ -45,19 +78,31 @@ class _ShopPageState extends State<ShopPage> {
             title: Text(
               'HoloCoins: ${user.holoCoins}',
             )),
-        body: ListView(children: [
-          Card(
-            child: ListTile(
-              title: Text(
-                  "${upgrade.channel.upgradeName} [Tier ${upgrade.channel.upgradeTier}]"),
-              subtitle: Text(upgrade.channel.upgradeDesc),
-              trailing: ElevatedButton(
-                  onPressed: () =>
-                      increaseTier(upgrade.channel, upgrade.channel.tier),
-                  child: Text(setButtonState(upgrade.channel.upgradeTier, 3))),
-              isThreeLine: true,
-            ),
-          )
-        ]));
+        body: ListView.builder(
+          controller: _firstController,
+          itemCount: _upgrades.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              child: ListTile(
+                title: Text(
+                    "${_upgrades[index].upgradeName} [Tier ${_upgrades[index].upgradeTier}]"),
+                subtitle: Text(
+                    "${_upgrades[index].upgradeDesc}\nCost: ${_upgrades[index].upgradeCost}"),
+                trailing: ElevatedButton(
+                    onPressed: checkMax(
+                            _upgrades[index].tier, _upgrades[index].maxTier)
+                        ? null
+                        : () {
+                            increaseTier(
+                                _upgrades[index], _upgrades[index].tier);
+                            checkFuncType(_upgrades[index]);
+                          },
+                    child: Text(setButtonState(_upgrades[index].upgradeTier,
+                        _upgrades[index].maxTier))),
+                isThreeLine: true,
+              ),
+            );
+          },
+        ));
   }
 }
