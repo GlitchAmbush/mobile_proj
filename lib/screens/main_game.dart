@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'achievements_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../util/user_data.dart' as user;
 import 'dart:async';
-import 'dart:io';
 
 class MainGame extends StatefulWidget {
   const MainGame({super.key});
@@ -13,8 +11,8 @@ class MainGame extends StatefulWidget {
 }
 
 class _MainGameState extends State<MainGame> {
-  int _count = user.holoCoins;
-  int _timedCount = 0;
+  num _count = user.holoCoins;
+  num _timedCount = 0;
   double _average = 0;
   Timer? timer;
   int arr = achievmentList.length;
@@ -23,9 +21,67 @@ class _MainGameState extends State<MainGame> {
 
   void update() {
     setState(() {
-      user.holoCoins++;
-      _count++;
-      _timedCount++;
+      user.holoCoins += (user.passiveIncome.round());
+      _count += user.passiveIncome;
+      _timedCount += user.passiveIncome;
+      man();
+      if (achievmentList.length > arr) {
+        arr = achievmentList.length;
+        OverlayEntry overlayEntry = OverlayEntry(
+          builder: (BuildContext context) => Positioned(
+            top: MediaQuery.of(context).size.height * 0.8,
+            left: MediaQuery.of(context).size.width -
+                200, // Set the left property to shift the overlay to the right side of the screen
+            child: Material(
+              child: Container(
+                height: 60.0,
+                width: 200.0,
+                color: Colors.grey,
+                child: const Center(
+                  child: Text('New achievement!'),
+                ),
+              ),
+            ),
+          ),
+        );
+        Overlay.of(context).insert(overlayEntry);
+        Future.delayed(const Duration(seconds: 3)).then((_) {
+          overlayEntry.remove();
+        });
+      }
+    });
+  }
+
+  void click() {
+    setState(() {
+      user.holoCoins += (user.onClickIncome.round());
+      _count += user.onClickIncome;
+      _timedCount += user.onClickIncome;
+      man();
+      if (achievmentList.length > arr) {
+        arr = achievmentList.length;
+        OverlayEntry overlayEntry = OverlayEntry(
+          builder: (BuildContext context) => Positioned(
+            top: MediaQuery.of(context).size.height * 0.8,
+            left: MediaQuery.of(context).size.width -
+                200, // Set the left property to shift the overlay to the right side of the screen
+            child: Material(
+              child: Container(
+                height: 60.0,
+                width: 200.0,
+                color: Colors.grey,
+                child: const Center(
+                  child: Text('New achievement!'),
+                ),
+              ),
+            ),
+          ),
+        );
+        Overlay.of(context).insert(overlayEntry);
+        Future.delayed(const Duration(seconds: 3)).then((_) {
+          overlayEntry.remove();
+        });
+      }
     });
   }
   
@@ -35,7 +91,8 @@ class _MainGameState extends State<MainGame> {
       if (_timedCount == 0) {
         _average = 0;
       } else {
-        _average = _timedCount / 3;
+        _average = _timedCount / 1;
+        _timedCount = 0;
       }
     }
   }
@@ -76,8 +133,10 @@ if (achievmentList.length > arr) {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(
-        const Duration(seconds: 3), (Timer t) => averageClicks());
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      averageClicks();
+      update();
+    });
   }
 
   @override
@@ -100,29 +159,15 @@ if (achievmentList.length > arr) {
                 padding: const EdgeInsets.all(60.0),
                 child: FloatingActionButton.large(
                     onPressed: (){
-                      update();
+                      click;
                       setAchievments();
                       checkAchievement();
                       },
                     tooltip: 'Gain HoloCoins!',
                     child: const Icon(Icons.add)),
               ),
-              ElevatedButton(
-                  onPressed: () async {
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    prefs.setInt('counter', _count);
-                  },
-                  child: const Text('Save Data')),
-              ElevatedButton(
-                  onPressed: () async {
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    setState(() {
-                      _count = prefs.getInt('counter')!;
-                    });
-                  },
-                  child: const Text('load Data'))
+              ElevatedButton(onPressed: () {}, child: const Text('Save Data')),
+              ElevatedButton(onPressed: () {}, child: const Text('load Data'))
             ],
           ),
         ));

@@ -34,7 +34,6 @@ class Start extends StatelessWidget {
                               child: ListBody(children: const [
                                 Text('Lemuel Javier'),
                                 Text('Ronal Rodriguez'),
-                                Text('Mitish Mistry'),
                                 Text('Kym Michael Gripal')
                               ]),
                             ),

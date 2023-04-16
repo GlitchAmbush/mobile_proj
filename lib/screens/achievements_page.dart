@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../util/user_data.dart' as user;
 
 class AchievementsPage extends StatefulWidget {
-const AchievementsPage({Key? key}) : super(key: key);
+  const AchievementsPage({Key? key}) : super(key: key);
 
   @override
   State<AchievementsPage> createState() => _AchievementsPageState();
@@ -50,9 +50,7 @@ setAchievments();
         body: ListView.builder(
             controller: _firstController,
             itemCount: achievmentList.length,
-            
             itemBuilder: (BuildContext context, int index) {
-
               return Container(
   height: 50,
   decoration: BoxDecoration(
@@ -68,7 +66,6 @@ setAchievments();
     ),
   ),
 );
-
             }));
   }
 }
