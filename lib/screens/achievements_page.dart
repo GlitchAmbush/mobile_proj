@@ -42,7 +42,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text('Achievement Page'),
+        title: const Text('Achievement'),
       ),
       body: ListView.builder(
         controller: _firstController,
@@ -89,4 +89,3 @@ class _AchievementsPageState extends State<AchievementsPage> {
     );
   }
 }
-

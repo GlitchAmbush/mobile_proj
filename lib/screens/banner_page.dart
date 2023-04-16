@@ -28,8 +28,9 @@ class _BannerPageState extends State<BannerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.blue,
-             title: const Text('Recruiting Page'),),
+          backgroundColor: Colors.blue,
+          title: const Text('Recruiting'),
+        ),
         body: ListView.builder(
             controller: _firstController,
             itemCount: _list.length,

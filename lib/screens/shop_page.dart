@@ -74,8 +74,9 @@ class _ShopPageState extends State<ShopPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.blue,
-             title: const Text('Shop Page'),),
+          backgroundColor: Colors.blue,
+          title: const Text('Shop'),
+        ),
         body: ListView.builder(
           controller: _firstController,
           itemCount: _upgrades.length,

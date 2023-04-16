@@ -9,21 +9,26 @@ class CollectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Collection Page'),
+        title: const Text('Collection'),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.only(top: 16.0),
         itemCount: bannerTitle.length,
         itemBuilder: (BuildContext context, int index) {
           String genName = bannerTitle.keys.toList()[index];
-          Map<String, double>? genMembers = bannerTitle.values.toList()[index].cast<String, double>();
+          Map<String, double>? genMembers =
+              bannerTitle.values.toList()[index].cast<String, double>();
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 16.0, 0, 8.0),
-                child: Center( child: Text(genName, style: Theme.of(context).textTheme.titleLarge,),
-            ),
+                child: Center(
+                  child: Text(
+                    genName,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ),
               ),
               Container(
                 decoration: BoxDecoration(
