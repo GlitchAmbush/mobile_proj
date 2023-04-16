@@ -55,7 +55,7 @@ if (achievmentList.length > arr) {
   Future.delayed(const Duration(seconds: 3)).then((_) {
     overlayEntry.remove();
   });
-}
+} 
 
 
   }
