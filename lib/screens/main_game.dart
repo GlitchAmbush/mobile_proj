@@ -89,6 +89,11 @@ class _MainGameState extends State<MainGame> {
       update();
     });
   }
+   @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
