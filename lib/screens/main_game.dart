@@ -22,30 +22,8 @@ class _MainGameState extends State<MainGame> {
       user.holoCoins += (user.passiveIncome.round());
       _count += user.passiveIncome;
       _timedCount += user.passiveIncome;
-      if (achievmentList.length > arr) {
-        arr = achievmentList.length;
-        OverlayEntry overlayEntry = OverlayEntry(
-          builder: (BuildContext context) => Positioned(
-            top: MediaQuery.of(context).size.height * 0.8,
-            left: MediaQuery.of(context).size.width -
-                200, // Set the left property to shift the overlay to the right side of the screen
-            child: Material(
-              child: Container(
-                height: 60.0,
-                width: 200.0,
-                color: Colors.grey,
-                child: const Center(
-                  child: Text('New achievement!'),
-                ),
-              ),
-            ),
-          ),
-        );
-        Overlay.of(context).insert(overlayEntry);
-        Future.delayed(const Duration(seconds: 3)).then((_) {
-          overlayEntry.remove();
-        });
-      }
+      setAchievments();
+      checkAchievement();
     });
   }
 
@@ -54,30 +32,6 @@ class _MainGameState extends State<MainGame> {
       user.holoCoins += (user.onClickIncome.round());
       _count += user.onClickIncome;
       _timedCount += user.onClickIncome;
-      if (achievmentList.length > arr) {
-        arr = achievmentList.length;
-        OverlayEntry overlayEntry = OverlayEntry(
-          builder: (BuildContext context) => Positioned(
-            top: MediaQuery.of(context).size.height * 0.8,
-            left: MediaQuery.of(context).size.width -
-                200, // Set the left property to shift the overlay to the right side of the screen
-            child: Material(
-              child: Container(
-                height: 60.0,
-                width: 200.0,
-                color: Colors.grey,
-                child: const Center(
-                  child: Text('New achievement!'),
-                ),
-              ),
-            ),
-          ),
-        );
-        Overlay.of(context).insert(overlayEntry);
-        Future.delayed(const Duration(seconds: 3)).then((_) {
-          overlayEntry.remove();
-        });
-      }
     });
   }
 
@@ -157,8 +111,6 @@ class _MainGameState extends State<MainGame> {
                 child: FloatingActionButton.large(
                     onPressed: () {
                       click;
-                      setAchievments();
-                      checkAchievement();
                     },
                     tooltip: 'Gain HoloCoins!',
                     child: const Icon(Icons.add)),
