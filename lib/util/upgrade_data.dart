@@ -1,7 +1,7 @@
 import "./upgrade_class.dart";
 
 // Passive Upgrades
-final channel = Passive(
+var channel = Passive(
     "HoloChannel", // Name
     "Create a channel for your agency!\n[+1 HoloCoin per second]", // Inital Description
     "Upgrade your channel!\n[+1 HoloCoin per second]", // Upgraded Description
