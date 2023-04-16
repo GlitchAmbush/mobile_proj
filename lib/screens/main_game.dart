@@ -17,14 +17,11 @@ class _MainGameState extends State<MainGame> {
   Timer? timer;
   int arr = achievmentList.length;
 
-
-
   void update() {
     setState(() {
       user.holoCoins += (user.passiveIncome.round());
       _count += user.passiveIncome;
       _timedCount += user.passiveIncome;
-      man();
       if (achievmentList.length > arr) {
         arr = achievmentList.length;
         OverlayEntry overlayEntry = OverlayEntry(
@@ -57,7 +54,6 @@ class _MainGameState extends State<MainGame> {
       user.holoCoins += (user.onClickIncome.round());
       _count += user.onClickIncome;
       _timedCount += user.onClickIncome;
-      man();
       if (achievmentList.length > arr) {
         arr = achievmentList.length;
         OverlayEntry overlayEntry = OverlayEntry(
@@ -84,7 +80,6 @@ class _MainGameState extends State<MainGame> {
       }
     });
   }
-  
 
   void averageClicks() {
     if (mounted) {
@@ -96,39 +91,41 @@ class _MainGameState extends State<MainGame> {
       }
     }
   }
-  void checkAchievement(){
-if (achievmentList.length > arr) {
-  arr = achievmentList.length;
-  OverlayEntry overlayEntry = OverlayEntry(
-    builder: (BuildContext context) => Positioned(
-      top: MediaQuery.of(context).size.height * 0.8,
-      left: MediaQuery.of(context).size.width - 200,
-      child: Material(
-        child: Container(
-          height: 60.0,
-          width: 200.0,
-          decoration: BoxDecoration(
-            color: Colors.blueAccent,
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          child: const Center(
-            child: Text('New achievement!',
-              style: TextStyle(
-                color: Colors.white,
-                  fontSize: 16.0,
+
+  void checkAchievement() {
+    if (achievmentList.length > arr) {
+      arr = achievmentList.length;
+      OverlayEntry overlayEntry = OverlayEntry(
+        builder: (BuildContext context) => Positioned(
+          top: MediaQuery.of(context).size.height * 0.8,
+          left: MediaQuery.of(context).size.width - 200,
+          child: Material(
+            child: Container(
+              height: 60.0,
+              width: 200.0,
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+              child: const Center(
+                child: Text(
+                  'New achievement!',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                  ),
+                ),
               ),
             ),
           ),
         ),
-      ),
-    ),
-  );
-  Overlay.of(context).insert(overlayEntry);
-  Future.delayed(const Duration(seconds: 3)).then((_) {
-    overlayEntry.remove();
-  });
-} 
-}
+      );
+      Overlay.of(context).insert(overlayEntry);
+      Future.delayed(const Duration(seconds: 3)).then((_) {
+        overlayEntry.remove();
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -158,11 +155,11 @@ if (achievmentList.length > arr) {
               Padding(
                 padding: const EdgeInsets.all(60.0),
                 child: FloatingActionButton.large(
-                    onPressed: (){
+                    onPressed: () {
                       click;
                       setAchievments();
                       checkAchievement();
-                      },
+                    },
                     tooltip: 'Gain HoloCoins!',
                     child: const Icon(Icons.add)),
               ),
@@ -171,6 +168,5 @@ if (achievmentList.length > arr) {
             ],
           ),
         ));
-    
   }
 }
