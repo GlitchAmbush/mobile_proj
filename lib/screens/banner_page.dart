@@ -29,7 +29,7 @@ class _BannerPageState extends State<BannerPage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: Text('HoloCoins: ${user.holoCoins}')),
+             title: const Text('Recruiting Page'),),
         body: ListView.builder(
             controller: _firstController,
             itemCount: _list.length,

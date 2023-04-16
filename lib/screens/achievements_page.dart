@@ -42,7 +42,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text('HoloCoins: ${user.holoCoins}'),
+        title: const Text('Achievement Page'),
       ),
       body: ListView.builder(
         controller: _firstController,

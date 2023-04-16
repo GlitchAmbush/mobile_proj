@@ -75,9 +75,7 @@ class _ShopPageState extends State<ShopPage> {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.blue,
-            title: Text(
-              'HoloCoins: ${user.holoCoins}',
-            )),
+             title: const Text('Shop Page'),),
         body: ListView.builder(
           controller: _firstController,
           itemCount: _upgrades.length,
