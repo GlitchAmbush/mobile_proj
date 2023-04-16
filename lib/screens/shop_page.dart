@@ -12,9 +12,9 @@ class ShopPage extends StatefulWidget {
 class _ShopPageState extends State<ShopPage> {
   // final ScrollController _firstController = ScrollController();
 
-  void increaseTier(tier) {
+  void increaseTier(object, tierVal) {
     setState(() {
-      tier = tier + 1;
+      object.tier = tierVal + 1;
     });
   }
 
@@ -52,7 +52,8 @@ class _ShopPageState extends State<ShopPage> {
                   "${upgrade.channel.upgradeName} [Tier ${upgrade.channel.upgradeTier}]"),
               subtitle: Text(upgrade.channel.upgradeDesc),
               trailing: ElevatedButton(
-                  onPressed: () => increaseTier(upgrade.channel.tier),
+                  onPressed: () =>
+                      increaseTier(upgrade.channel, upgrade.channel.tier),
                   child: Text(setButtonState(upgrade.channel.upgradeTier, 3))),
               isThreeLine: true,
             ),
