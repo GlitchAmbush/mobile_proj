@@ -22,6 +22,8 @@ class _MainGameState extends State<MainGame> {
       user.holoCoins += (user.passiveIncome.round());
       _count += user.passiveIncome;
       _timedCount += user.passiveIncome;
+      setAchievments();
+      checkAchievement();
     });
   }
 
