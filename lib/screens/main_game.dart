@@ -22,7 +22,10 @@ class _MainGameState extends State<MainGame> {
       user.holoCoins += (user.passiveIncome.round());
       _count += user.passiveIncome;
       _timedCount += user.passiveIncome;
-      setAchievments();
+      //setAchievement checks to see if an achievement meets the criteria to be added 
+      //checkAchievements checks if a new achievement was added and if it was then a little overlay is showen then taken away after a couple seconds\
+      //Ronal Rodriguez Arias (101314540)
+      setAchievements();
       checkAchievement();
     });
   }

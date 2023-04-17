@@ -5,6 +5,10 @@ import '../util/banner_data.dart';
 class CollectionPage extends StatelessWidget {
   const CollectionPage({super.key});
 
+//This function bellow  grabs the generation of the members and then outputs all members from said gen ans so forth
+//Added  padding, centering, backgroundcolouring and much more styling.
+//we also check to see if member listed already exists in user.collection and if they do then they turn blue instead of the original grey.
+//Ronal Rodriguez Arias (101314540)
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -7,8 +7,9 @@ class AchievementsPage extends StatefulWidget {
   @override
   State<AchievementsPage> createState() => _AchievementsPageState();
 }
-
-setAchievments() {
+//this checks if achievements meet requirements to be added and show up as an actual achievment earned
+//Ronal Rodriguez Arias (101314540)
+setAchievements() {
   int count = user.holoCoins;
   if (count >= 10 && !user.achievements.contains("Reach 10 HoloCoins")) {
     user.achievements.add("Reach 10 HoloCoins");
@@ -31,8 +32,14 @@ setAchievments() {
   if (count >= 5000 && !user.achievements.contains("Reach 5000 HoloCoins")) {
     user.achievements.add("Reach 5000 HoloCoins");
   }
+  if(user.collection.isNotEmpty && !user.achievements.contains("Reach First Idol")){
+    user.achievements.add("Reach First Idol");
+  }
 }
 
+//this just displayed all the earned achievements and displays them on screen
+//which also has styling to make it look better
+//Ronal Rodriguez Arias
 class _AchievementsPageState extends State<AchievementsPage> {
   final ScrollController _firstController = ScrollController();
   @override
