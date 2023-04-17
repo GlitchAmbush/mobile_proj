@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../util/banner_data.dart' as banner;
-import '../util/user_data.dart' as user;
 import 'pulls_screen.dart';
 
 class BannerPage extends StatefulWidget {
@@ -15,6 +14,10 @@ class _BannerPageState extends State<BannerPage> {
 
   final _list = banner.bannerTitle.keys.toList();
 
+  // To explain briefly,
+  // this checks to see if a key in the bannerTitle Map exists
+  // then pushes into the pulls_screen while passing the idolList data into it.
+  // Lemuel Javier (101168735)
   void _goToPulls(BuildContext context, String selectedBanner) {
     if (banner.bannerTitle.containsKey(selectedBanner)) {
       Navigator.of(context).push(MaterialPageRoute(
@@ -24,6 +27,8 @@ class _BannerPageState extends State<BannerPage> {
     }
   }
 
+  // This widget displays all existing banners.
+  // Lemuel Javier (101168735)
   @override
   Widget build(BuildContext context) {
     return Scaffold(

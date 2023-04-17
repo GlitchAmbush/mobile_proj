@@ -81,6 +81,12 @@ class _MainGameState extends State<MainGame> {
     }
   }
 
+  // The initstate initializes a state on page launch
+  // Here, it uses a timer that triggers 2 functions every second.
+  // These functions calculates the average clicks to display
+  // and update() is used to update holoCoins, increment holoCoins by its passive income,
+  // check achievements for thresholds, and to update variables that is used to calculate average clicks.
+  // Lemuel Javier (101168735)
   @override
   void initState() {
     super.initState();
@@ -96,6 +102,10 @@ class _MainGameState extends State<MainGame> {
     super.dispose();
   }
 
+  // This is the main widget. Every time the FloatingActionButton is pressed,
+  // it calls the click() function which increments holoCoins based on its active income
+  // and updates variables that assist with average clicks calculations.
+  // Lemuel Javier (101168735)
   @override
   Widget build(BuildContext context) {
     return Scaffold(

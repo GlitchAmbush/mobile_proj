@@ -74,6 +74,11 @@ class _ShopPageState extends State<ShopPage> {
     return "Buy";
   }
 
+  // Main widget that displays all purchasable upgrades.
+  // If they do not have a sufficient amount of holoCoins, a dialog box will inform them.
+  // As they purchase, the tier will increase until it hits its maximum
+  // when the tier is maxed, the button will grey out and cannot be pressed.
+  // Lemuel Javier (101168735)
   @override
   Widget build(BuildContext context) {
     return Scaffold(
