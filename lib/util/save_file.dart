@@ -20,3 +20,11 @@ Future<bool> saveVariablesToFile(Map<String, dynamic> variables) async {
     return false;
   }
 }
+
+Future<String> readFile() async {
+  Directory appDocDir = await getApplicationDocumentsDirectory();
+  String appDocPath = appDocDir.path;
+  final File file = File('$appDocPath/variables.txt');
+  String fileContent = await file.readAsString();
+  return fileContent;
+}
