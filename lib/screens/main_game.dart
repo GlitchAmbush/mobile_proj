@@ -88,7 +88,6 @@ class _MainGameState extends State<MainGame> {
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       averageClicks();
       update();
-      loadSavedData();
     });
   }
 
@@ -109,24 +108,21 @@ class _MainGameState extends State<MainGame> {
     });
   }
 
-  Future<bool> loadSavedData() async {
+  Future<void> loadSavedData() async {
     Map<String, dynamic>? savedVariables = await readVariablesFromFile();
-
     try {
       if (savedVariables != null) {
-        user.achievements = savedVariables['achievements'] as List<String>;
-        user.collection = savedVariables['collection'] as List<String>;
-        user.holoCoins = int.parse(savedVariables['holoCoins']);
-        user.onClickIncome = int.parse(savedVariables['onClickIncome']);
-        user.passiveIncome = int.parse(savedVariables['passiveIncome']);
-        user.upgrades = Map<String, int>.from(
-            savedVariables['upgrades'] as Map<String, dynamic>);
-        return true;
+        setState(() {
+          user.achievements = savedVariables['achievements'] as List<String>;
+          user.collection = savedVariables['collection'] as List<String>;
+          user.holoCoins = int.parse(savedVariables['holoCoins']);
+          user.onClickIncome = int.parse(savedVariables['onClickIncome']);
+          user.passiveIncome = int.parse(savedVariables['passiveIncome']);
+          user.upgrades = Map<String, int>.from(
+              savedVariables['upgrades'] as Map<String, dynamic>);
+        });
       }
-      return false;
-    } on Exception catch (e) {
-      return false;
-    }
+    } on Exception catch (_) {}
   }
 
   @override
@@ -167,13 +163,13 @@ class _MainGameState extends State<MainGame> {
                   child: const Text('Save Data')),
               ElevatedButton(
                   onPressed: () async {
-                    if (await loadSavedData()) {
+                    await loadSavedData().then((_) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Data loaded!'),
                         ),
                       );
-                    }
+                    });
                   },
                   child: const Text('load Data'))
             ],
