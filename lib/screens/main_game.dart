@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'achievements_page.dart';
 import '../util/user_data.dart' as user;
 import 'dart:async';
+import '../util/save_file.dart';
 
 class MainGame extends StatefulWidget {
   const MainGame({super.key});
@@ -105,6 +106,35 @@ class _MainGameState extends State<MainGame> {
     super.dispose();
   }
 
+
+  Future<bool> saveData() async {
+    return await saveVariablesToFile({
+      'achievements': user.achievements,
+      'collection': user.collection,
+      'holoCoins': user.holoCoins,
+      'onClickIncome': user.onClickIncome,
+      'passiveIncome': user.passiveIncome,
+      'upgrades': user.upgrades
+    });
+  }
+
+  Future<void> loadSavedData() async {
+    Map<String, dynamic>? savedVariables = await readVariablesFromFile();
+    try {
+      if (savedVariables != null) {
+        setState(() {
+          user.achievements = savedVariables['achievements'] as List<String>;
+          user.collection = savedVariables['collection'] as List<String>;
+          user.holoCoins = int.parse(savedVariables['holoCoins']);
+          user.onClickIncome = int.parse(savedVariables['onClickIncome']);
+          user.passiveIncome = int.parse(savedVariables['passiveIncome']);
+          user.upgrades = Map<String, int>.from(
+              savedVariables['upgrades'] as Map<String, dynamic>);
+        });
+      }
+    } on Exception catch (_) {}
+  }
+
   // This is the main widget. Every time the FloatingActionButton is pressed,
   // it calls the click() function which increments holoCoins based on its active income
   // and updates variables that assist with average clicks calculations.
@@ -134,8 +164,28 @@ class _MainGameState extends State<MainGame> {
                     tooltip: 'Gain HoloCoins!',
                     child: const Icon(Icons.add)),
               ),
-              ElevatedButton(onPressed: () {}, child: const Text('Save Data')),
-              ElevatedButton(onPressed: () {}, child: const Text('load Data'))
+              ElevatedButton(
+                  onPressed: () async {
+                    if (await saveData()) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Data saved successfully!'),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text('Save Data')),
+              ElevatedButton(
+                  onPressed: () async {
+                    await loadSavedData().then((_) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Data loaded!'),
+                        ),
+                      );
+                    });
+                  },
+                  child: const Text('load Data'))
             ],
           ),
         ));

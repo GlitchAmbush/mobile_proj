@@ -14,7 +14,7 @@ List<String> collection = [];
 // 0 == not purchased
 // {"Upgrade Name" : Tier}
 // [Lemuel Javier (101168735)]
-final Map<String, int> ugprades = {"": 0};
+final Map<String, int> ugprades = {};
 
 // Achievements
 List<String> achievements = [];

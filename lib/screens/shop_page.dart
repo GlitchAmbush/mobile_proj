@@ -52,7 +52,7 @@ class _ShopPageState extends State<ShopPage> {
   }
 
   void addToUser(object) {
-    setState(() => user.ugprades[object.name] = object.tier);
+    setState(() => user.upgrades[object.name] = object.tier);
   }
 
   bool checkMax(tier, max) {
