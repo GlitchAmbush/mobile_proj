@@ -56,7 +56,7 @@ class _MainGameState extends State<MainGame> {
       OverlayEntry overlayEntry = OverlayEntry(
         builder: (BuildContext context) => Positioned(
           top: MediaQuery.of(context).size.height * 0.8,
-          left: MediaQuery.of(context).size.width - 100,
+          left: MediaQuery.of(context).size.width - 300,
           child: Material(
             child: Container(
               height: 60.0,
