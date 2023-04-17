@@ -12,7 +12,7 @@ List<String> collection = [];
 // Keeps track of upgrades bought and their respective purchased tiers
 // 0 == not purchased
 // {"Upgrade Name" : Tier}
-final Map<String, int> ugprades = {"": 0};
+Map<String, int> upgrades = {};
 
 // Achievements
 List<String> achievements = [];
