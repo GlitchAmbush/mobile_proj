@@ -18,6 +18,12 @@ class _PullsScreenState extends State<PullsScreen> {
   late final List? _names = _list?.keys.toList();
   late final List? _rates = _list?.values.toList();
 
+  // This function recieves a bool as its parameter to check if the player
+  // is pulling 10x or 1x. Either way, holoCoins are consumed and
+  // holoMembers are pulled from a weighted pool using dart_random_choice.
+  // After they are added to the user's collection and are unique (no duplicates)
+  // and the results are shown to the user via showDialog.
+  // Lemuel Javier (101168735)
   void _gachaRoll(bool tenTimes) {
     String singlePull =
         randomChoice(_names as Iterable<String>, _rates as Iterable<double>);
@@ -69,6 +75,10 @@ class _PullsScreenState extends State<PullsScreen> {
     return ((val * 100).toStringAsFixed(2));
   }
 
+  // Main widget to display banner rates.
+  // If an insufficient of holoCoins is present, the user is given a dialog
+  // box showing that they have an insufficient amount.
+  // Lemuel Javier (101168375)
   @override
   Widget build(BuildContext context) {
     return Scaffold(

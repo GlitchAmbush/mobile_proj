@@ -44,12 +44,12 @@ class Passive extends Upgrade {
   num increase;
   final String type;
 
-  // function that increases passive income
+  // function that increases passive income [Lemuel Javier (101168735)]
   void intIncrease(increase) {
     passiveIncome += increase;
   }
 
-  // make sure percent value is 1.X instead of 0.X
+  // make sure percent value is 1.X instead of 0.X [Lemuel Javier (101168735)]
   void percentIncrease(increase) {
     passiveIncome += (increase * passiveIncome).ceil();
   }
@@ -63,12 +63,12 @@ class Active extends Upgrade {
   num increase;
   final String type;
 
-  // function that increases on-click value
+  // function that increases on-click value [Lemuel Javier (101168735)]
   void intIncrease(increase) {
     onClickIncome += increase;
   }
 
-  // make sure percent value is 1.X instead of 0.X
+  // make sure percent value is 1.X instead of 0.X [Lemuel Javier (101168735)]
   void percentIncrease(increase) {
     onClickIncome += (increase * passiveIncome).ceil();
   }
