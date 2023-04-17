@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'achievements_page.dart';
 import '../util/user_data.dart' as user;
 import 'dart:async';
+import '../util/save_file.dart';
 
 class MainGame extends StatefulWidget {
   const MainGame({super.key});
@@ -96,6 +97,19 @@ class _MainGameState extends State<MainGame> {
     super.dispose();
   }
 
+  Future<bool> saveData() async {
+    if (await saveVariablesToFile({
+      'holoCoins': user.holoCoins,
+      'passiveIncome': user.passiveIncome,
+      'onClickIncome': user.onClickIncome,
+      'achievements': user.achievements,
+    })) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,7 +135,17 @@ class _MainGameState extends State<MainGame> {
                     tooltip: 'Gain HoloCoins!',
                     child: const Icon(Icons.add)),
               ),
-              ElevatedButton(onPressed: () {}, child: const Text('Save Data')),
+              ElevatedButton(
+                  onPressed: () async {
+                    if (await saveData()) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Data saved successfully!'),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text('Save Data')),
               ElevatedButton(onPressed: () {}, child: const Text('load Data'))
             ],
           ),
