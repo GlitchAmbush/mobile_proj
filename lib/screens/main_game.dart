@@ -15,7 +15,7 @@ class _MainGameState extends State<MainGame> {
   num _timedCount = 0;
   double _average = 0;
   Timer? timer;
-  int arr = achievmentList.length;
+  int arr = user.achievements.length;
 
   void update() {
     setState(() {
@@ -47,8 +47,8 @@ class _MainGameState extends State<MainGame> {
   }
 
   void checkAchievement() {
-    if (achievmentList.length > arr) {
-      arr = achievmentList.length;
+    if (user.achievements.length > arr) {
+      arr = user.achievements.length;
       OverlayEntry overlayEntry = OverlayEntry(
         builder: (BuildContext context) => Positioned(
           top: MediaQuery.of(context).size.height * 0.8,

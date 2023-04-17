@@ -13,3 +13,6 @@ List<String> collection = [];
 // 0 == not purchased
 // {"Upgrade Name" : Tier}
 final Map<String, int> ugprades = {"": 0};
+
+// Achievements
+List<String> achievements = [];
