@@ -23,7 +23,7 @@ class _MainGameState extends State<MainGame> {
       user.holoCoins += (user.passiveIncome.round());
       _count += user.passiveIncome;
       _timedCount += user.passiveIncome;
-      //setAchievement checks to see if an achievement meets the criteria to be added 
+      //setAchievement checks to see if an achievement meets the criteria to be added
       //checkAchievements checks if a new achievement was added and if it was then a little overlay is showen then taken away after a couple seconds\
       //Ronal Rodriguez Arias (101314540)
       setAchievements();
@@ -56,7 +56,7 @@ class _MainGameState extends State<MainGame> {
       OverlayEntry overlayEntry = OverlayEntry(
         builder: (BuildContext context) => Positioned(
           top: MediaQuery.of(context).size.height * 0.8,
-          left: MediaQuery.of(context).size.width - 200,
+          left: MediaQuery.of(context).size.width - 100,
           child: Material(
             child: Container(
               height: 60.0,
@@ -105,7 +105,6 @@ class _MainGameState extends State<MainGame> {
     timer?.cancel();
     super.dispose();
   }
-
 
   Future<bool> saveData() async {
     return await saveVariablesToFile({
