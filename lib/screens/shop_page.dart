@@ -51,6 +51,10 @@ class _ShopPageState extends State<ShopPage> {
     }
   }
 
+  void addToUser(object) {
+    setState(() => user.ugprades[object.name] = object.tier);
+  }
+
   bool checkMax(tier, max) {
     if (tier == max) {
       return true;
@@ -93,10 +97,11 @@ class _ShopPageState extends State<ShopPage> {
                         ? null
                         : () {
                             if (user.holoCoins >= _upgrades[index].cost) {
+                              _upgrades[index].purchase();
                               increaseTier(
                                   _upgrades[index], _upgrades[index].tier);
                               checkFuncType(_upgrades[index]);
-                              _upgrades[index].purchase();
+                              addToUser(_upgrades[index]);
                             } else {
                               showDialog(
                                   context: context,
