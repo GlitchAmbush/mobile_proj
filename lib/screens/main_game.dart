@@ -99,10 +99,12 @@ class _MainGameState extends State<MainGame> {
 
   Future<bool> saveData() async {
     if (await saveVariablesToFile({
-      'holoCoins': user.holoCoins,
-      'passiveIncome': user.passiveIncome,
-      'onClickIncome': user.onClickIncome,
       'achievements': user.achievements,
+      'collection': user.collection,
+      'holoCoins': user.holoCoins,
+      'onClickIncome': user.onClickIncome,
+      'passiveIncome': user.passiveIncome,
+      'ugprades': user.ugprades
     })) {
       return true;
     } else {
